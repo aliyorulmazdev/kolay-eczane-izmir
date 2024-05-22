@@ -9,12 +9,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { PhoneIcon, LocateIcon, PillIcon } from "lucide-react";
 import React from "react";
-
 const PharmacyInformation = ({ pharmacy, onGetDirections, loading }) => {
   const handleDownloadVCard = () => {
+    // Replace "İ" with "I" in the contact name
+    const name = pharmacy.Adi.replace(/İ/g, "I");
     // Create contact object
     const contact = {
-      name: pharmacy.Adi,
+      name: name,
       phone: pharmacy.Telefon,
     };
     // Create vCard content
@@ -32,6 +33,11 @@ const PharmacyInformation = ({ pharmacy, onGetDirections, loading }) => {
     // Cleanup
     URL.revokeObjectURL(url);
   };
+
+  const handlePhoneCall = () => {
+    window.location.href = `tel:${pharmacy.Telefon}`;
+  };
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const options = {
@@ -52,7 +58,7 @@ const PharmacyInformation = ({ pharmacy, onGetDirections, loading }) => {
             <PillIcon className="h-10 w-10 text-primary" />
             <div>
               <CardTitle>{pharmacy.Adi}</CardTitle>
-              <CardDescription>
+              <CardDescription className=' justify-start flex items-start pt-2'>
                 {pharmacy.Bolge} - {formatDate(pharmacy.Tarih)}
               </CardDescription>
             </div>
@@ -65,11 +71,20 @@ const PharmacyInformation = ({ pharmacy, onGetDirections, loading }) => {
             <Button
               size="sm"
               variant="ghost"
-              className=" bg-gray-100 dark:bg-secondary hover:bg-gray-300"
+              className={`bg-gray-100 dark:bg-secondary hover:bg-gray-300 dark:hover:bg-gray-700 ml-5`}
               onClick={handleDownloadVCard}
               disabled={loading}
             >
               Rehbere Kaydet
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className={`bg-gray-100 dark:bg-secondary hover:bg-gray-300 dark:hover:bg-gray-700`}
+              onClick={handlePhoneCall}
+              disabled={loading}
+            >
+              Ara
             </Button>
           </div>
           <div className="flex items-center gap-3">

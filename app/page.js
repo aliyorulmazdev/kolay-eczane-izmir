@@ -86,6 +86,7 @@ export default function Home() {
                     <DirectionsDisplay
                         directions={directions}
                         shortestPharmacy={pharmacy}
+                        travelMode={mode}
                     />
                 )}
             </div>
