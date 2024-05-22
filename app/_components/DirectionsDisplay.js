@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
+import { AiOutlineNumber } from "react-icons/ai";
 
 const DirectionsDisplay = ({ directions, shortestPharmacy, travelMode }) => {
   let prevInstruction = "";
@@ -45,40 +47,61 @@ const DirectionsDisplay = ({ directions, shortestPharmacy, travelMode }) => {
     }
   };
 
+  const handleRefresh = () => {
+    window.location.reload();
+  };
+
   return (
-    <div className="relative mx-auto grid max-h-[calc(100vh-200px)] max-w-[calc(100vw-100px)] gap-4 overflow-y-auto pb-6 pl-6 pr-6 after:absolute after:inset-y-0 after:left-0 after:w-px after:bg-gray-500/20 dark:after:bg-gray-400/20">
-      {directions.map((step, index) => {
-        if (step.instruction === prevInstruction) {
-          return null;
-        }
+    <>
+      <div className="flex flex-col items-center justify-center">
+        <div className="container max-w-md space-y-8 px-4 py-12 text-center mb-7">
+          <div className="space-y-4">
+            {directions.map((step, index) => {
+              if (step.instruction === prevInstruction) {
+                return null;
+              }
 
-        prevInstruction = step.instruction;
+              prevInstruction = step.instruction;
 
-        return (
-          <div key={index} className="relative grid gap-1 text-left text-sm">
-            <div className="absolute left-0 top-1 z-10 aspect-square w-3 translate-x-[-29.5px] rounded-full bg-gray-900 dark:bg-gray-50" />
-            <div className="flex items-center gap-2">
-              <div className="font-medium">
-                {step.instruction.replace("şekildeda", "şekilde")} -{" "}
-                {step.distance} metre | Tahmini {step.duration} saniye
-              </div>
+              return (
+                <div
+                  key={index}
+                >
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="flex items-center justify-center w-8 h-8 bg-primary text-secondary rounded-full">
+                      {index + 1}
+                    </div>
+                    <div className="font-medium">
+                      <span>
+                        {step.instruction.replace("şekildeda", "şekilde")}
+                      </span>
+                      <br />
+                      <span> {step.distance} m. </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+              <Button variant="default" onClick={handleOpenGoogleMaps}>
+                Google Haritalara Bağlan
+              </Button>
+              <Button
+                variant="default"
+                onClick={handleOpenAppleMaps}
+              >
+                Apple Haritalarına Bağlan
+              </Button>
+              <Button
+                onClick={handleRefresh}
+                variant="default"
+                className='w-full'
+              >
+                Anasayfaya Dön
+              </Button>
             </div>
-          </div>
-        );
-      })}
-      <div>
-        <Button variant="default" onClick={handleOpenGoogleMaps}>
-          Google Haritalara Bağlan
-        </Button>
-        <Button
-          variant="default"
-          className="mt-3"
-          onClick={handleOpenAppleMaps}
-        >
-          Apple Haritalarına Bağlan
-        </Button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

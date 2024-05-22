@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { PhoneIcon, LocateIcon, PillIcon } from "lucide-react";
 import React from "react";
+import { Label } from "@/components/ui/label";
 const PharmacyInformation = ({ pharmacy, onGetDirections, loading }) => {
   const handleDownloadVCard = () => {
     // Replace "İ" with "I" in the contact name
@@ -59,7 +60,7 @@ const PharmacyInformation = ({ pharmacy, onGetDirections, loading }) => {
             <div>
               <CardTitle>{pharmacy.Adi}</CardTitle>
               <CardDescription className=' justify-start flex items-start pt-2'>
-                {pharmacy.Bolge} - {formatDate(pharmacy.Tarih)}
+                <Label>{pharmacy.Bolge} - {formatDate(pharmacy.Tarih)}</Label>
               </CardDescription>
             </div>
           </div>
@@ -67,7 +68,7 @@ const PharmacyInformation = ({ pharmacy, onGetDirections, loading }) => {
         <CardContent className="grid gap-4">
           <div className="flex items-center gap-3">
             <PhoneIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
-            <span>{pharmacy.Telefon}</span>
+            <Label>{pharmacy.Telefon}</Label>
             <Button
               size="sm"
               variant="ghost"
@@ -89,7 +90,7 @@ const PharmacyInformation = ({ pharmacy, onGetDirections, loading }) => {
           </div>
           <div className="flex items-center gap-3">
             <LocateIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
-            <span>{pharmacy.Adres}</span>
+            <Label>{pharmacy.Adres}</Label>
           </div>
           <Button onClick={onGetDirections} disabled={loading}>
             Yol tarifi almak istiyorum
