@@ -47,10 +47,6 @@ const DirectionsDisplay = ({ directions, shortestPharmacy, travelMode }) => {
     }
   };
 
-  const handleRefresh = () => {
-    window.location.reload();
-  };
-
   return (
     <>
       <div className="flex flex-col items-center justify-center">
@@ -64,9 +60,7 @@ const DirectionsDisplay = ({ directions, shortestPharmacy, travelMode }) => {
               prevInstruction = step.instruction;
 
               return (
-                <div
-                  key={index}
-                >
+                <div key={index}>
                   <div className="flex flex-col items-center gap-2">
                     <div className="flex items-center justify-center w-8 h-8 bg-primary text-secondary rounded-full">
                       {index + 1}
@@ -82,23 +76,13 @@ const DirectionsDisplay = ({ directions, shortestPharmacy, travelMode }) => {
                 </div>
               );
             })}
-              <Button variant="default" onClick={handleOpenGoogleMaps}>
-                Google Haritalara Bağlan
-              </Button>
-              <Button
-                variant="default"
-                onClick={handleOpenAppleMaps}
-              >
-                Apple Haritalarına Bağlan
-              </Button>
-              <Button
-                onClick={handleRefresh}
-                variant="default"
-                className='w-full'
-              >
-                Anasayfaya Dön
-              </Button>
-            </div>
+            <Button variant="default" onClick={handleOpenGoogleMaps}>
+              Google Haritalara Bağlan
+            </Button>
+            <Button variant="default" onClick={handleOpenAppleMaps}>
+              Apple Haritalarına Bağlan
+            </Button>
+          </div>
         </div>
       </div>
     </>

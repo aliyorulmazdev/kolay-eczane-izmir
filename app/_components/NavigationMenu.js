@@ -1,4 +1,3 @@
-// components/NavigationMenu.js
 "use client";
 
 import { Menubar, MenubarMenu } from "@/components/ui/menubar";
@@ -11,7 +10,7 @@ const NavigationMenu = () => {
     window.location.reload();
   };
   return (
-    <Menubar className="flex justify-center items-center px-4 gap-0 w-full h-14 pr-5 pl-5">
+    <Menubar className="fixed bottom-0 w-full flex justify-center items-center px-4 gap-0 h-14 pr-5 pl-5 z-20">
       <MenubarMenu>
         <Link href="/">
           <Button onClick={handleRefresh} variant="ghost">Anasayfa</Button>
