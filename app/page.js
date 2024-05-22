@@ -51,7 +51,7 @@ export default function Home() {
     };
 
     return (
-        <div className="flex h-screen flex-col items-center justify-center">
+        <div className="flex  h-fit flex-col items-center justify-center">
             <div className="container max-w-md space-y-8 px-4 py-12 text-center">
                 {/* Location Form */}
                 {latitude === null && longitude === null && (

@@ -52,6 +52,12 @@ const DirectionsDisplay = ({ directions, shortestPharmacy, travelMode }) => {
       <div className="flex flex-col items-center justify-center">
         <div className="container max-w-md space-y-8 px-4 py-12 text-center mb-7">
           <div className="space-y-4">
+          <Button variant="default" onClick={handleOpenGoogleMaps}>
+              Google Haritalara Bağlan
+            </Button>
+            <Button variant="default" onClick={handleOpenAppleMaps}>
+              Apple Haritalarına Bağlan
+            </Button>
             {directions.map((step, index) => {
               if (step.instruction === prevInstruction) {
                 return null;
@@ -60,7 +66,7 @@ const DirectionsDisplay = ({ directions, shortestPharmacy, travelMode }) => {
               prevInstruction = step.instruction;
 
               return (
-                <div key={index}>
+                <div key={index} className="no-border no-margin no-padding">
                   <div className="flex flex-col items-center gap-2">
                     <div className="flex items-center justify-center w-8 h-8 bg-primary text-secondary rounded-full">
                       {index + 1}
@@ -76,12 +82,7 @@ const DirectionsDisplay = ({ directions, shortestPharmacy, travelMode }) => {
                 </div>
               );
             })}
-            <Button variant="default" onClick={handleOpenGoogleMaps}>
-              Google Haritalara Bağlan
-            </Button>
-            <Button variant="default" onClick={handleOpenAppleMaps}>
-              Apple Haritalarına Bağlan
-            </Button>
+
           </div>
         </div>
       </div>
