@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 
 const ThanksMenu = () => {
   return (
-    <Menubar className="flex justify-center items-center px-4 gap-6 w-full h-14">
+    <Menubar className="flex justify-center items-center px-4 gap-6 w-full h-10 ">
       <MenubarMenu>
         <Link href="https://acikveri.bizizmir.com/">
           <Button variant='ghost'>İzmir Büyükşehir Belediyesi Açık Veri Portalı</Button>
