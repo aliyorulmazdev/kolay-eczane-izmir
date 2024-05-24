@@ -1,0 +1,16 @@
+{
+    "name": "Next-13 PWA",
+    "short_name": "PWA",
+    "theme_color": "#efefef",
+    "background_color": "#efefef",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "icons/icon-128x128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      }
+    ]
+  }
