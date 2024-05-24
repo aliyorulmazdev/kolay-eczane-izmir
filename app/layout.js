@@ -23,11 +23,12 @@ export const metadata = {
   icons: [
     { rel: "apple-touch-icon", url: "icons/icon-128x128.png" },
     { rel: "icon", url: "icons/icon-128x128.png" },
+    { rel: "tablet-icon", url: "icons/icon-512x512.png" },
   ],
 };
 
 export const viewport = {
-  themeColor: "#efefef",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }) {
