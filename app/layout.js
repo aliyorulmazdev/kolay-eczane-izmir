@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="absolute inset-0 -z-10 h-full w-full dark:bg-[radial-gradient(#12192d_1px,transparent_1px)] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
+          <div className="absolute inset-0 -z-10 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#020817_1px,transparent_1px)]  [background-size:16px_16px]"></div>
           <div className="flex-grow">{children}</div>
           <footer className="w-full sticky bottom-14 pb-2 flex justify-center shadow-md">
             <ThanksMenu />

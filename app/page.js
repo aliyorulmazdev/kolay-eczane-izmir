@@ -7,6 +7,7 @@ import DirectionsDisplay from "./_components/DirectionsDisplay";
 import Header from "./_components/Header";
 import PharmacyInformation from "./_components/PharmacyInformation";
 import LoadingPillIcon from "./_components/LoadingPillIcon";
+import MarqueeDemo from "./_components/PharmacyMarquee";
 
 export default function Home() {
     const [latitude, setLatitude] = useState(null);
@@ -61,6 +62,7 @@ export default function Home() {
                             onSubmit={handleLocationSubmit}
                             loading={loading}
                         />
+                        <MarqueeDemo />
                     </>
                 )}
 

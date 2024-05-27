@@ -39,14 +39,23 @@ export async function GET(req) {
     const long = parseFloat(searchParams.get("long") || "");
     const mode = searchParams.get("mode");
 
+    const PHARMACY_API_URL = "https://openapi.izmir.bel.tr/api/ibb/nobetcieczaneler";
+
+    // If latitude, longitude, or mode is missing, return the entire list of pharmacies
     if (!lat || !long || !mode) {
-        return NextResponse.json(
-            { error: "Latitude, longitude, and travel mode are required" },
-            { status: 400 }
-        );
+        try {
+            const response = await fetch(PHARMACY_API_URL);
+            const data = await response.json();
+            return NextResponse.json(data);
+        } catch (error) {
+            console.error("Error fetching pharmacy data:", error);
+            return NextResponse.json(
+                { error: "Error fetching pharmacy data" },
+                { status: 500 }
+            );
+        }
     }
 
-    const PHARMACY_API_URL = "https://openapi.izmir.bel.tr/api/ibb/nobetcieczaneler";
     try {
         const response = await fetch(PHARMACY_API_URL);
         const data = await response.json();
